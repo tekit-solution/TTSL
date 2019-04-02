@@ -30,7 +30,7 @@ public class AddAccountController {
 			logger.debug("Account Id:" +id);
 			AddAccountImpl accountImpl = new AddAccountImpl();
 			List<AddAccountResponse> addAccountResponse = accountImpl.accountList(id);
-			if (addAccountResponse != null && !addAccountResponse.isEmpty()) {
+			if(addAccountResponse != null && !addAccountResponse.isEmpty()) {
 				return new ResponseEntity<List<? extends AddAccountResponse>>(addAccountResponse, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<List<? extends AddAccountResponse>>(addAccountResponse, HttpStatus.NO_CONTENT);
