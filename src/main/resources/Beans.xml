@@ -1,0 +1,160 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	<!-- Initialization for data source -->
+	<!-- <bean id="dataSource" class = "org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+		<property name = "driverClassName" value = "com.mysql.jdbc.Driver"/> <property 
+		name = "url" value = "jdbc:mysql://localhost:3306/fusion?useSSL=false"/> 
+		<property name = "username" value = "root"/> <property /> </bean> -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url"
+			value="jdbc:sqlserver://114.79.173.10:1433;DatabaseName=CPW" />
+		<property name="username" value="sa" />
+		<property name="password" value="Sqlserver#346" />
+	</bean>
+
+	<!-- Use Jackson for JSON conversion (POJO to JSON outbound). -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+
+ <bean id="multipartResolver"    class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+</bean>
+	<!-- Use JSON conversion for messages -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Definition for JDBCTemplate bean -->
+	<bean id="accountTypeDAOImpl" class="com.cpw.dao.AccountTypeDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="addAccountDAOImpl" class="com.cpw.dao.AddAccountDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="blListDAOImpl" class="com.cpw.dao.BlListDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="contactDAOImpl" class="com.cpw.dao.ContactDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="currencyDAOImpl" class="com.cpw.dao.CurrencyDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="customerChallengeDAOImpl" class="com.cpw.dao.CustomerChallengeDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="custChallangeOriginDAOImpl" class="com.cpw.dao.CustChallangeOriginDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="custChallangePriortyDAOImpl" class="com.cpw.dao.CustChallangePriortyDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="custChallangeStatusDAOImpl" class="com.cpw.dao.CustChallangeStatusDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="industryDAOImpl" class="com.cpw.dao.IndustryDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="leadDAOImpl" class="com.cpw.dao.LeadDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="leadFieldDAOImpl" class="com.cpw.dao.LeadFieldDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="leadSourceDAOImpl" class="com.cpw.dao.LeadSourceDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="leadStatusDAOImpl" class="com.cpw.dao.LeadStatusDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="pramotionalDAOImpl" class="com.cpw.dao.PramotionalDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="pendingInvoiceDetailDAOImpl" class="com.cpw.dao.PendingInvoiceDetailDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="portMasterDAOImpl" class="com.cpw.dao.PortMasterDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="ratingDAOImpl" class="com.cpw.dao.RatingDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="salesBudgetDAOImpl" class="com.cpw.dao.SalesBudgetDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="salutationDAOImpl" class="com.cpw.dao.SalutationDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="scheduleSearchDAOImpl" class="com.cpw.dao.ScheduleSearchDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sectorDAOImpl" class="com.cpw.dao.SectorDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="traceDAOImpl" class="com.cpw.dao.TraceDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="trackingDetailDAOImpl" class="com.cpw.dao.TrackingDetailDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="userDetailDAOImpl" class="com.cpw.dao.UserDetailDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="vesselDAOImpl" class="com.cpw.dao.VesselDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="eventDAOImpl" class="com.cpw.dao.EventDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="stageDAOImpl" class="com.cpw.dao.StageDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="dealDAOImpl" class="com.cpw.dao.DealDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="callDAOImpl" class="com.cpw.dao.CallDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="imageDAOImpl" class="com.cpw.dao.ImageStoreDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="taskDAOImpl" class="com.cpw.dao.TaskDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="syncAllDetailDaoImpl" class="com.cpw.dao.SyncAllDetailDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	 <bean id="pdfCreationDaoImpl" class="com.cpw.dao.PdfCreationDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> 
+	 <bean id="SailingSchedulDaoImpl" class="com.cpw.dao.SailingSchedulDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	 <bean id="agentInfoDaoImpl" class="com.cpw.dao.AgentInfoDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="SailSchedulDaoImpl" class="com.cpw.dao.Sale_scheduleDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="notificationDAOImpl" class="com.cpw.dao.NotificationDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	
+	
+
+
+</beans>
